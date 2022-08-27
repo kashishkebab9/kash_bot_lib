@@ -4,7 +4,6 @@
 #include "../include/JointConfig.h"
 
 int main() {
-  std::cout << "Running JointConfigTest: " << std::endl;
 
   JointConfiguration jc_1;
   Joint head;

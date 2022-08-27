@@ -55,7 +55,7 @@ class JointConfiguration {
         tmp = tmp->next_joint;
         counter++;
       }
-      std::cout << "There are " << counter << " Joints in this kinematic chain";
+      std::cout << "There are " << counter << " Joints in this kinematic chain" << std::endl;
       return counter;
 
     }
