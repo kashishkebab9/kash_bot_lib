@@ -15,10 +15,10 @@ struct JointNode {
 class JointConfiguration {
   private:
     JointNode *head, *tail;
-    std::string name;
 
   public:
 
+    std::string name;
     JointConfiguration() {
       head = NULL;
       tail = NULL;
@@ -44,6 +44,20 @@ class JointConfiguration {
 
     void set_name(std::string name_) {
       name = name_;
+    }
+
+    int NumJointsToTail() {
+      JointNode *tmp = head;
+
+      int counter = 1;
+
+      while(tmp != this->tail) {
+        tmp = tmp->next_joint;
+        counter++;
+      }
+      std::cout << "There are " << counter << " Joints in this kinematic chain";
+      return counter;
+
     }
 
 

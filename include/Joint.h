@@ -12,7 +12,12 @@ class Joint {
 
   public:
     Joint();
-    void SetTransform(Eigen::Matrix4d transform);
+    Joint(Eigen::Matrix4d t_prev_body_this_joint);
+
+    void SetTransform(Eigen::Matrix4d transform) {
+      this->t_prev_body_this_joint = transform;
+
+    }
 
 
     
