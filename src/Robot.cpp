@@ -6,7 +6,6 @@ Robot::Robot(std::string name_) {
   this->number_of_joint_configs = 0;
   
 
-
 }
 
 void Robot::SetBaseTransform(Eigen::Matrix4d world_to_base) {
@@ -27,7 +26,6 @@ void Robot::AddJointConfiguration(Eigen::Matrix4d base_to_first_joint, std::stri
   JointConfiguration new_config;
   Joint joint_leading_new_config;
 
-  joint_leading_new_config.SetTransform(base_to_first_joint);
   new_config.add_node(joint_leading_new_config);
   new_config.set_name(joint_config_name);
 

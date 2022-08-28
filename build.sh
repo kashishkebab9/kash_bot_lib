@@ -1,5 +1,7 @@
 #!/bin/bash
 
+time
+
 RED=$'\e[1;31m'
 GREEN=$'\e[1;32m'
 NC=$'\e[1;0m'
@@ -17,12 +19,19 @@ function test() {
   else
     echo "Testing on $1 $RED Failed!$NC"
   fi
+  
+  echo "======================================================"
 
 }
 
-echo "Building JointConfigTest"
-g++ test/JointConfigTest.cpp src/Joint.cpp -I include/ -o joint_config
-test joint_config
+echo "======================================================"
+echo "$CYAN Building JointConfigTest... $NC"
+g++ test/JointConfigTest.cpp src/Joint.cpp -I include/ -o joint_config_test
+test joint_config_test
+
+echo "$CYAN Building JointTest... $NC"
+g++ test/JointTest.cpp src/Joint.cpp -I include/ -o joint_test
+test joint_test
 
 
-echo "$GREEN Done"
+echo "$GREEN Done $PURPLE"

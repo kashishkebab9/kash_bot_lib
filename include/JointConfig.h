@@ -28,7 +28,7 @@ class JointConfiguration {
 
     void add_node(Joint joint_to_add) {
       JointNode *tmp = new JointNode;
-      tmp->joint = joint_to_add;
+      tmp->joint =joint_to_add;
       tmp->next_joint = NULL;
 
       if(head == NULL) {

@@ -6,7 +6,7 @@
 int main() {
 
   JointConfiguration jc_1;
-  Joint head;
+  Joint head("head");
   jc_1.add_node(head);
   jc_1.set_name("jc_1_test");
 
@@ -16,7 +16,7 @@ int main() {
     return 1;
   }
 
-  Joint joint1;
+  Joint joint1("index_1");
   jc_1.add_node(joint1);
 
   if (jc_1.NumJointsToTail() != 2) {
