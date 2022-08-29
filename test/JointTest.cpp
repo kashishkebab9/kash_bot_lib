@@ -13,7 +13,6 @@ int main() {
   joint.SetTranslation(1, 1, 1);
   joint.SetRotationX(M_PI/2);
   joint.SetJointAngleRad(M_PI/8);
-  joint.GetCurrentRelativePosition();
   
 
 

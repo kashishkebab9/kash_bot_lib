@@ -30,20 +30,19 @@ int main() {
 
   std::cout << "Starting Joint Fwd Kinematics Test" << std::endl;
 
+  Joint joint_test_2_0("test2_0");
+  joint_test_2_0.SetTranslation(1, 0, 0);
+
+  Joint joint_test_2_1("test2_1");
+  joint_test_2_1.SetTranslation(0, 0, -5);
+
+  JointConfiguration test2;
+  test2.add_node(joint_test_2_0);
+  test2.add_node(joint_test_2_1);
   
-
-
-
-
-
-
-
-
-
-  
-
-
-
+  Eigen::Transform<double, 3, Eigen::Affine> input;
+  input = Eigen::Matrix4d::Identity();
+  test2.SolveFwdKin(input);
 
 
 

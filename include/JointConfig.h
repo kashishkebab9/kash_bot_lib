@@ -58,22 +58,23 @@ class JointConfiguration {
 
    }
 
-    Eigen::Transform<double, 3, Eigen::Affine> SolveFwdKin(Eigen::Transform<double, 3, Eigen::Affine> &chain) {
+    Eigen::Transform<double, 3, Eigen::Affine> SolveFwdKin(Eigen::Transform<double, 3, Eigen::Affine>& chain) {
+      Eigen::Transform<double, 3, Eigen::Affine> output;
       if (this->head != NULL) {
+        output = chain;
         JointNode * iter;
         iter = head;
+          
+        while(iter != NULL) {
 
-        do {
-
-          chain = iter->joint.FwdKinChainCalc(chain);
+          output = iter->joint.FwdKinChainCalc(output);
           iter = iter->next_joint;
 
-        } while(iter->next_joint != NULL);
-          
+        std::cout  << "output: " << output.matrix() << std::endl;
+        }
       }
-      
 
-      return chain;
+      return output;
 
       
     }

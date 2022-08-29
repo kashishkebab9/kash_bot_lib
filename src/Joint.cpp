@@ -101,7 +101,6 @@ Eigen::Transform<double, 3, Eigen::Affine> Joint::FwdKinChainCalc(Eigen::Transfo
   Eigen::Transform<double, 3, Eigen::Affine> output;
   output = this->chain.translation * this->chain.x_rotation * this->chain.y_rotation * this->chain.z_rotation * input; 
   
-  std::cout << "Output: " << std::endl << output.matrix() << std::endl;
   return output;
 }
 
