@@ -1,0 +1,10 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+#define BOLDYELLOW  "\033[1m\033[33m"
+
+void test(std::string test_name) {
+  std::cout << "==============================" << std::endl;
+  std::cout << "Starting Test " << test_name << std::endl;
+}

@@ -70,8 +70,8 @@ class JointConfiguration {
           output = iter->joint.FwdKinChainCalc(output);
           iter = iter->next_joint;
 
-        std::cout  << "output: " << output.matrix() << std::endl;
         }
+        std::cout  << "FwdKin for Joint Configuration " << this->name <<":  " << std::endl << output.matrix() << std::endl;
       }
 
       return output;
