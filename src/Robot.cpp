@@ -19,17 +19,10 @@ void Robot::SetBaseTransform(Eigen::Matrix4d world_to_base) {
 
 }
 
-void Robot::AddJointConfiguration(Eigen::Matrix4d base_to_first_joint, std::string joint_config_name) {
-  std::cout << "Adding Joint Configuration to Base of Robot " << this->robot_name << std::endl;
-  std::cout << "First Joint of this chain will be transformed from the base by " << base_to_first_joint << std::endl;
+void Robot::AddJointConfiguration(JointConfiguration joint_config) {
+  std::cout << "Adding Joint Configuration " << joint_config.name <<  " to Base of Robot " << this->robot_name << std::endl;
 
-  JointConfiguration new_config;
-  Joint joint_leading_new_config;
-
-  new_config.add_node(joint_leading_new_config);
-  new_config.set_name(joint_config_name);
-
-  this->joint_config_accessor.push_back(new_config);
+  this->joint_config_accessor.push_back(joint_config);
   this->number_of_joint_configs++;
 
 }
@@ -38,6 +31,8 @@ void AddJoint(Joint joint, JointConfiguration joint_config) {
   std::cout << "Adding Joint to Joint Configuration " << joint_config.name << std::endl;
   joint_config.add_node(joint);
 }
+
+
 
 
 

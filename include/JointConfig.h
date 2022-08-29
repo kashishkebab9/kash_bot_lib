@@ -1,6 +1,9 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include "Joint.h"
+#include <Eigen/Dense>
 
 // The Joint Configuration of a Robot will be a linked list containing each joint in the kinematic chain
 
@@ -54,6 +57,26 @@ class JointConfiguration {
       return num_of_joints;
 
    }
+
+    Eigen::Transform<double, 3, Eigen::Affine> SolveFwdKin(Eigen::Transform<double, 3, Eigen::Affine> &chain) {
+      if (this->head != NULL) {
+        JointNode * iter;
+        iter = head;
+
+        do {
+
+          chain = iter->joint.FwdKinChainCalc(chain);
+          iter = iter->next_joint;
+
+        } while(iter->next_joint != NULL);
+          
+      }
+      
+
+      return chain;
+
+      
+    }
 
 
 

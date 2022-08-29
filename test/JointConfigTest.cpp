@@ -15,6 +15,7 @@ int main() {
     std::cout << "When it should've returned 1!" << std::endl;
     return 1;
   }
+  
 
   Joint joint1("index_1");
   jc_1.add_node(joint1);
@@ -24,6 +25,12 @@ int main() {
     std::cout << "When it should've returned 2!" << std::endl;
     return 1;
   }
+
+  std::cout << "Succeeded Joint Counter Test!" << std::endl;
+
+  std::cout << "Starting Joint Fwd Kinematics Test" << std::endl;
+
+  
 
 
 

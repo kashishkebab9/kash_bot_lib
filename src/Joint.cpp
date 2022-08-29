@@ -96,12 +96,10 @@ double Joint::GetCurrentAngleDeg() {
   return this->q_rad / (M_PI/180);
 }
 
-Eigen::Transform<double, 3, Eigen::Affine> Joint::GetCurrentRelativePosition() {
-  Eigen::Matrix4d origin;
-  origin = Eigen::Matrix4d::Identity();
+Eigen::Transform<double, 3, Eigen::Affine> Joint::FwdKinChainCalc(Eigen::Transform<double, 3, Eigen::Affine> input) {
   
   Eigen::Transform<double, 3, Eigen::Affine> output;
-  output = this->chain.z_rotation * this->chain.translation * this->chain.x_rotation * this->chain.y_rotation * origin; 
+  output = this->chain.translation * this->chain.x_rotation * this->chain.y_rotation * this->chain.z_rotation * input; 
   
   std::cout << "Output: " << std::endl << output.matrix() << std::endl;
   return output;

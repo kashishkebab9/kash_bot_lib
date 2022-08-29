@@ -51,7 +51,7 @@ class Joint {
     double GetCurrentAngleRad();
     double GetCurrentAngleDeg();
 
-    Eigen::Transform<double,3,Eigen::Affine> GetCurrentRelativePosition(); 
+    Eigen::Transform<double,3,Eigen::Affine> FwdKinChainCalc(Eigen::Transform<double, 3, Eigen::Affine> input); 
     void UpdateZRot();
     
 
