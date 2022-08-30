@@ -68,8 +68,8 @@ Eigen::Transform<double, 3, Eigen::Affine> Robot::SolveFwdKin(const JointConfigu
   std::cout << "t_w_b: "<< std::endl <<t_w_b.matrix() << std::endl;
   return jc->SolveFwdKin(t_w_b);
 
-
 }
+
 
 
 
