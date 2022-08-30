@@ -10,7 +10,7 @@ int main() {
   JointConfiguration jc_1;
   Joint head("head");
   jc_1.add_node(head);
-  jc_1.set_name("jc_1_test");
+  jc_1.SetName("jc_1_test");
 
   if (jc_1.NumJointsToTail() != 1) {
     std::cout << RED << "NumJointsToTail returned: " << jc_1.NumJointsToTail() << std::endl;

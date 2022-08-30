@@ -2,7 +2,7 @@
 
 Robot::Robot(std::string name_) {
   //By default the base of the robot will be initiliazed to be in the same frame as the world itself
-  this->w_b_position = Eigen::Translation3d(0,0, 0);
+  this->w_b_position = Eigen::Translation3d(0, 0, 0);
   this->w_b_rot_x = Eigen::Matrix3d::Identity(); 
   this->w_b_rot_y = Eigen::Matrix3d::Identity(); 
   this->w_b_rot_z = Eigen::Matrix3d::Identity(); 
@@ -46,8 +46,8 @@ void Robot::SetRotationZ(double angle_in_rad) {
   this->w_b_rot_z = aa;
 }
 
-void Robot::AddJointConfiguration(JointConfiguration joint_config) {
-  std::cout << "Adding Joint Configuration " << joint_config.name <<  " to Base of Robot " << this->robot_name << std::endl;
+void Robot::AddJointConfiguration(JointConfiguration &joint_config) {
+  std::cout << "Adding Joint Configuration " << joint_config.GetName() <<  " to Base of Robot " << this->robot_name << std::endl;
 
   this->joint_config_accessor.push_back(joint_config);
   this->number_of_joint_configs++;
@@ -55,10 +55,21 @@ void Robot::AddJointConfiguration(JointConfiguration joint_config) {
 }
 
 void AddJoint(Joint joint, JointConfiguration joint_config) {
-  std::cout << "Adding Joint to Joint Configuration " << joint_config.name << std::endl;
+  std::cout << "Adding Joint to Joint Configuration " << joint_config.GetName() << std::endl;
   joint_config.add_node(joint);
 }
 
+Eigen::Transform<double, 3, Eigen::Affine> Robot::SolveFwdKin(const JointConfiguration joint_config) {
+
+  auto jc = std::find(this->joint_config_accessor.begin(), this->joint_config_accessor.end(), joint_config);
+
+  Eigen::Transform<double, 3, Eigen::Affine> t_w_b;
+  t_w_b = this->w_b_position * this->w_b_rot_x * this->w_b_rot_y * this->w_b_rot_z;
+  std::cout << "t_w_b: "<< std::endl <<t_w_b.matrix() << std::endl;
+  return jc->SolveFwdKin(t_w_b);
+
+
+}
 
 
 

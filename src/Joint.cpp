@@ -99,8 +99,9 @@ double Joint::GetCurrentAngleDeg() {
 Eigen::Transform<double, 3, Eigen::Affine> Joint::FwdKinChainCalc(Eigen::Transform<double, 3, Eigen::Affine> input) {
   
   Eigen::Transform<double, 3, Eigen::Affine> output;
-  output = this->chain.translation * this->chain.x_rotation * this->chain.y_rotation * this->chain.z_rotation * input; 
-  
+
+  output =  this->chain.translation * this->chain.x_rotation * this->chain.y_rotation * this->chain.z_rotation;
+  output = input * output;
   return output;
 }
 

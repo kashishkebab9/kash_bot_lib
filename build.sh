@@ -26,12 +26,15 @@ function test() {
 
 echo "======================================================"
 echo "$CYAN Building JointConfigTest... $NC"
-g++ test/JointConfigTest.cpp src/Joint.cpp -I include/ -o joint_config_test
+g++ -std=c++11 test/JointConfigTest.cpp src/Joint.cpp -I include/ -o joint_config_test
 test joint_config_test
 
 echo "$CYAN Building JointTest... $NC"
-g++ test/JointTest.cpp src/Joint.cpp -I include/ -o joint_test
+g++ -std=c++11 test/JointTest.cpp src/Joint.cpp -I include/ -o joint_test
 test joint_test
 
+echo "$CYAN Building RobotTest... $NC"
+g++ -std=c++11 test/RobotTest.cpp src/Robot.cpp src/Joint.cpp -I include/ -o robot_test
+test robot_test
 
 echo "$GREEN Done $PURPLE"

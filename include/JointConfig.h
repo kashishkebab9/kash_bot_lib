@@ -19,14 +19,25 @@ class JointConfiguration {
   private:
     JointNode *head, *tail;
     int num_of_joints;
+    std::string name;
 
   public:
 
-    std::string name;
     JointConfiguration() {
       num_of_joints = 0;
       head = NULL;
       tail = NULL;
+    }
+
+    JointConfiguration(std::string jc_name) {
+      num_of_joints = 0;
+      head = NULL;
+      tail = NULL;
+      this->name = jc_name;
+    }
+
+    bool operator==(const JointConfiguration &other) const {
+      return this->name == other.name;
     }
 
     void add_node(Joint joint_to_add) {
@@ -47,9 +58,12 @@ class JointConfiguration {
       num_of_joints++;
 
     }
-
-    void set_name(std::string name_) {
-      name = name_;
+  
+    std::string GetName() {
+      return this->name;
+    }
+    void SetName(std::string name_) {
+      this->name = name_;
     }
 
     int NumJointsToTail() {

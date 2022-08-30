@@ -53,6 +53,10 @@ class Joint {
 
     Eigen::Transform<double,3,Eigen::Affine> FwdKinChainCalc(Eigen::Transform<double, 3, Eigen::Affine> input); 
     void UpdateZRot();
+
+    std::string GetName() {
+      return this->name;
+    }
     
 
     
