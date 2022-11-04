@@ -1,5 +1,6 @@
 #include "../include/Joint.h"
 
+//this is atest
 Joint::Joint()
 :  name("joint_no_name"),
    q_rad(0.0){
